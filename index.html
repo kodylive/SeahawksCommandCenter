@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seahawks Command Center</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="https://a.espncdn.com/i/teamlogos/nfl/500/sea.png">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/sea.png" alt="Seahawks logo" class="brand-logo">
+      <div class="brand-text">
+        <h1>Seahawks Command Center</h1>
+        <span class="brand-sub">Seattle Seahawks &middot; NFC West</span>
+      </div>
+    </div>
+    <div class="topbar-status">
+      <span id="recordBadge" class="record-badge">--</span>
+      <button id="refreshBtn" class="refresh-btn" title="Refresh all data">&#8635;</button>
+    </div>
+  </div>
+  <div id="liveTicker" class="live-ticker hidden"></div>
+</header>
+
+<nav class="tabbar" id="tabbar">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="schedule">Schedule</button>
+  <button class="tab-btn" data-tab="standings">Standings</button>
+  <button class="tab-btn" data-tab="roster">Roster</button>
+  <button class="tab-btn" data-tab="injuries">Injuries</button>
+  <button class="tab-btn" data-tab="stats">Team Stats</button>
+  <button class="tab-btn" data-tab="history">History</button>
+  <button class="tab-btn" data-tab="playoffs">Playoff Odds</button>
+  <button class="tab-btn" data-tab="fantasy">Fantasy Watch</button>
+</nav>
+
+<main id="app">
+
+  <section id="tab-overview" class="tab-panel active">
+    <div class="panel-grid">
+      <div class="card next-game-card" id="nextGameCard"><div class="skeleton"></div></div>
+      <div class="card" id="recentFormCard"><h2>Recent Form</h2><div class="skeleton"></div></div>
+      <div class="card" id="divisionSnapshotCard"><h2>NFC West Snapshot</h2><div class="skeleton"></div></div>
+      <div class="card" id="newsCard"><h2>Latest News</h2><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+  <section id="tab-schedule" class="tab-panel">
+    <div class="card">
+      <div class="card-header-row">
+        <h2>2026 Schedule</h2>
+        <span class="muted" id="scheduleMeta"></span>
+      </div>
+      <div id="scheduleList"><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+  <section id="tab-standings" class="tab-panel">
+    <div class="panel-grid two-col">
+      <div class="card" id="nfcWestCard"><h2>NFC West</h2><div class="skeleton"></div></div>
+      <div class="card" id="nfcWildcardCard"><h2>NFC Wild Card Race</h2><div class="skeleton"></div></div>
+    </div>
+    <div class="card" id="fullStandingsCard">
+      <h2>Full League Standings</h2>
+      <div id="fullStandings"><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+  <section id="tab-roster" class="tab-panel">
+    <div class="card">
+      <div class="card-header-row">
+        <h2>Roster</h2>
+        <div class="roster-filters" id="rosterFilters"></div>
+      </div>
+      <div id="rosterGrid" class="roster-grid"><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+  <section id="tab-injuries" class="tab-panel">
+    <div class="card">
+      <h2>Injury Report</h2>
+      <div id="injuryList"><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+  <section id="tab-stats" class="tab-panel">
+    <div class="card">
+      <div class="card-header-row">
+        <h2 id="statsTitle">Team Stats</h2>
+      </div>
+      <div id="statsCategories"><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+  <section id="tab-history" class="tab-panel">
+    <div class="card">
+      <h2>Season-by-Season History</h2>
+      <p class="muted small">Franchise results by season (regular season), most recent first.</p>
+      <div id="historyTable"><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+  <section id="tab-playoffs" class="tab-panel">
+    <div class="card">
+      <h2>Playoff Odds</h2>
+      <p class="muted small" id="playoffOddsNote"></p>
+      <div id="playoffOdds"><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+  <section id="tab-fantasy" class="tab-panel">
+    <div class="card">
+      <div class="card-header-row">
+        <h2>Fantasy Watch</h2>
+        <span class="muted small">Live ESPN Fantasy ownership &amp; scoring for key skill players</span>
+      </div>
+      <div id="fantasyList"><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>Data via ESPN public APIs &middot; not affiliated with the NFL or Seattle Seahawks</span>
+  <span id="lastUpdated"></span>
+</footer>
+
+<div id="playerModal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div id="modalBody"><div class="skeleton"></div></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
