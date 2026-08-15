@@ -360,6 +360,12 @@ table.standings-table tr.highlight { background: rgba(105,190,40,0.12); }
   gap: 10px;
 }
 
+@media (max-width: 480px) {
+  .roster-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .player-card { padding: 8px; }
+  .player-card img { width: 46px; height: 46px; }
+}
+
 .player-card {
   background: var(--panel-alt);
   border-radius: 10px;
